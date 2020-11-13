@@ -1,13 +1,15 @@
 package citybike;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Station {
         int stationID;
         String location;
         ArrayList<Bike> bikes; //Arraylist containing bikes from Bike class
-
+           long renttimediff;
+           int diffTime = 4;
     public Station(int stationID,String location){
             this.stationID = stationID;
             this.location=location;
@@ -37,6 +39,13 @@ public class Station {
             bikes.remove(bike);
 
         }
+       /* public boolean rentBikes(Bike bike,Rent rent){
+            Date rentstart = rent.getRentStart();
+            Date rentenddate = rent.getRentEnd();
+
+            long diffTime = rentstart - rentenddate;
+            renttimediff = diffTime/((24 * 60 * 60 * 1000))
+        };*/
 
             @Override
             public String toString() {
