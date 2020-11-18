@@ -25,7 +25,7 @@ public class Station {
     //Method that add the bikes to station
         public boolean addBike(Bike bike) {
             if (this.upperLimit <= this.bikes.size()) {
-                System.out.println("\n The station" + this.stationID + " is full");
+                System.out.println("Sorry! The station " + location + " is full return to another station");
             } else {
                 bikes.add(bike);
 
@@ -41,13 +41,13 @@ public class Station {
         }
         public static void rentBike( User user,Bike bike,Station station){
             //user.userrentedbike(bike);
+            System.out.println("User" +user.getUsername() +" " + "is now renting Bike" +bike.getBikeID()+" from the station " +station.location);
             station.removeBike(bike);
-            System.out.println("\n User" +user.getUsername() +" " + "is now renting Bike" +bike.getBikeID()+" from the station " +station.location);
-        }
+    }
         public static void returnbike(User user,Bike bike,Station station){
         if(station.addBike(bike)){
              user.userReturnbike(bike);
-            System.out.println("\n User" +user.getUsername() +"has returned bike" +bike.getBikeID() +"to station" +station.location);
+            System.out.println("User" +user.getUsername() +"has returned bike" +bike.getBikeID() +"to station" +station.location);
         }
         }
 
