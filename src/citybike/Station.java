@@ -1,10 +1,6 @@
 package citybike;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class Station {
         int stationID;
@@ -21,28 +17,40 @@ public class Station {
 
         }
 
-            public Station(HashMap<Integer, String> bikes) {
-
-            }
 
     public ArrayList<Bike> getBikes() {
         return bikes;
     }
 
     //Method that add the bikes to station
-        public void addBike(Bike bike) {
+        public boolean addBike(Bike bike) {
             if (this.upperLimit <= this.bikes.size()) {
-                System.out.println("\n The station" + this.stationID + "is full");
+                System.out.println("\n The station" + this.stationID + " is full");
             } else {
                 bikes.add(bike);
+
             }
+            return false;
         }
         //Method for returning Bike
         public void removeBike(Bike bike){
 
             bikes.remove(bike);
+            System.out.println("Bike"+bike.getBikeID() +" is remove from" +location);
 
         }
+        public static void rentBike( User user,Bike bike,Station station){
+            //user.userrentedbike(bike);
+            station.removeBike(bike);
+            System.out.println("\n User" +user.getUsername() +" " + "is now renting Bike" +bike.getBikeID()+" from the station " +station.location);
+        }
+        public static void returnbike(User user,Bike bike,Station station){
+        if(station.addBike(bike)){
+             user.userReturnbike(bike);
+            System.out.println("\n User" +user.getUsername() +"has returned bike" +bike.getBikeID() +"to station" +station.location);
+        }
+        }
+
        /*public void rentBikes(Bike bike,Rent rent){
             LocalDate rentstart = rent.getRentStart();
             LocalDate rentenddate = rent.getRentEnd();
